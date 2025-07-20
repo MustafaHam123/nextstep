@@ -1,0 +1,2051 @@
+<!DOCTYPE html>
+
+<html lang="en" class="scroll-smooth">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NextStep - Take the Next Step Toward Your Future</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+
+tailwind.config = {
+
+theme: {
+
+extend: {
+
+colors: {
+
+purple: '#791eff',
+
+blue: '#254aee',
+
+},
+
+fontFamily: {
+
+'sans': ['Inter', 'sans-serif'],
+
+'montserrat': ['Montserrat', 'sans-serif'],
+
+},
+
+animation: {
+
+'glow': 'glow 2s ease-in-out infinite alternate',
+
+}
+
+}
+
+}
+
+}
+
+</script>
+
+<style>
+
+@keyframes glow {
+
+from {
+
+box-shadow: 0 0 20px rgba(121, 30, 255, 0.3);
+
+}
+
+to {
+
+box-shadow: 0 0 30px rgba(121, 30, 255, 0.6), 0 0 40px rgba(37, 74, 238, 0.3);
+
+}
+
+}
+
+@keyframes floatUp {
+from {
+transform: translateY(50px);
+opacity: 0;
+}
+to {
+transform: translateY(0);
+opacity: 1;
+}
+}
+
+@keyframes gradientShift {
+0% {
+background-position: 0% 50%;
+}
+50% {
+background-position: 100% 50%;
+}
+100% {
+background-position: 0% 50%;
+}
+}
+
+.gradient-bg {
+background: linear-gradient(135deg, #254aee 0%, #791eff 100%);
+}
+
+.animated-gradient {
+background: linear-gradient(-45deg, #254aee, #791eff, #254aee, #791eff);
+background-size: 400% 400%;
+animation: gradientShift 6s ease infinite;
+}
+
+.glow-hover:hover {
+animation: glow 0.5s ease-in-out;
+transform: scale(1.05);
+}
+
+.parallax-bg {
+background: radial-gradient(circle at 20% 80%, rgba(121, 30, 255, 0.1) 0%, transparent 50%),
+radial-gradient(circle at 80% 20%, rgba(37, 74, 238, 0.1) 0%, transparent 50%);
+}
+
+.float-animation {
+animation: floatUp 0.8s ease-out forwards;
+}
+
+.card-hover {
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-hover:hover {
+transform: translateY(-8px) scale(1.02);
+box-shadow: 0 20px 40px rgba(121, 30, 255, 0.2);
+}
+
+/* Motion Blur Cursor Effect - DESKTOP ONLY */
+.motion-blur-box,
+.cursor-dot,
+.cursor-ring {
+position: fixed;
+pointer-events: none;
+z-index: 9999;
+opacity: 0;
+transition: opacity 0.1s ease-out;
+}
+
+.motion-blur-box {
+width: 20px;
+height: 20px;
+background: radial-gradient(circle, rgba(121, 30, 255, 0.8) 0%, rgba(37, 74, 238, 0.4) 50%, transparent 100%);
+border-radius: 50%;
+mix-blend-mode: screen;
+}
+
+.motion-blur-box.active {
+opacity: 1;
+}
+
+.cursor-dot {
+width: 8px;
+height: 8px;
+background: rgba(121, 30, 255, 0.9);
+border-radius: 50%;
+z-index: 10000;
+transition: transform 0.1s ease-out;
+}
+
+.cursor-ring {
+width: 40px;
+height: 40px;
+border: 2px solid rgba(121, 30, 255, 0.3);
+border-radius: 50%;
+z-index: 9998;
+transition: all 0.15s ease-out;
+}
+
+/* Animated Hero Section */
+.hero-container {
+height: 100vh;
+min-height: 600px;
+background: #000;
+overflow: hidden;
+position: relative;
+}
+
+.hero-svg {
+width: 100%;
+height: 100vh;
+min-height: 600px;
+font-family: 'Montserrat', sans-serif;
+font-weight: 900;
+}
+
+/* Mobile Hero Text */
+.mobile-hero-text {
+display: none;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+z-index: 10;
+font-family: 'Montserrat', sans-serif;
+font-weight: 900;
+background: linear-gradient(135deg, #791eff 0%, #254aee 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+/* Mouse instruction indicator */
+.mouse-indicator {
+position: absolute;
+top: 40px;
+left: 50%;
+transform: translateX(-50%);
+color: rgba(255, 255, 255, 0.8);
+font-size: 16px;
+font-weight: 600;
+text-align: center;
+z-index: 10;
+animation: pulseGlow 3s ease-in-out infinite;
+padding: 0 20px;
+}
+
+.mouse-icon {
+display: inline-block;
+margin: 0 8px;
+font-size: 20px;
+animation: wiggle 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+0%, 100% {
+text-shadow: 0 0 10px rgba(121, 30, 255, 0.5);
+opacity: 0.8;
+}
+50% {
+text-shadow: 0 0 20px rgba(121, 30, 255, 0.8), 0 0 30px rgba(37, 74, 238, 0.4);
+opacity: 1;
+}
+}
+
+@keyframes wiggle {
+0%, 100% { transform: rotate(-3deg); }
+50% { transform: rotate(3deg); }
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+position: absolute;
+bottom: 30px;
+left: 50%;
+transform: translateX(-50%);
+color: rgba(255, 255, 255, 0.5);
+font-size: 12px;
+animation: bounce 2s infinite;
+z-index: 10;
+}
+
+@keyframes bounce {
+0%, 20%, 50%, 80%, 100% {
+transform: translateX(-50%) translateY(0);
+}
+40% {
+transform: translateX(-50%) translateY(-10px);
+}
+60% {
+transform: translateX(-50%) translateY(-5px);
+}
+}
+
+/* Desktop Effects */
+.magnetic-card {
+transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+position: relative;
+overflow: hidden;
+min-height: 280px;
+will-change: transform;
+transform: translate3d(0, 0, 0);
+}
+
+.magnetic-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(135deg, rgba(121, 30, 255, 0.1) 0%, rgba(37, 74, 238, 0.1) 100%);
+opacity: 0;
+transition: opacity 0.3s ease;
+pointer-events: none;
+}
+
+.magnetic-card:hover::before {
+opacity: 1;
+}
+
+.magnetic-card:hover {
+box-shadow: 0 20px 40px rgba(121, 30, 255, 0.3), 0 0 0 1px rgba(121, 30, 255, 0.2);
+border-color: rgba(121, 30, 255, 0.5);
+}
+
+.floating-particles {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+overflow: hidden;
+pointer-events: none;
+}
+
+.particle {
+position: absolute;
+width: 4px;
+height: 4px;
+background: rgba(121, 30, 255, 0.3);
+border-radius: 50%;
+animation: float 8s infinite linear;
+}
+
+.particle:nth-child(2n) {
+background: rgba(37, 74, 238, 0.3);
+animation-duration: 12s;
+}
+
+.particle:nth-child(3n) {
+width: 2px;
+height: 2px;
+animation-duration: 10s;
+}
+
+@keyframes float {
+0% {
+transform: translateY(100vh) rotate(0deg);
+opacity: 0;
+}
+10% {
+opacity: 1;
+}
+90% {
+opacity: 1;
+}
+100% {
+transform: translateY(-100px) rotate(360deg);
+opacity: 0;
+}
+}
+
+.text-reveal {
+opacity: 0;
+transform: translateY(30px);
+transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-reveal.revealed {
+opacity: 1;
+transform: translateY(0);
+}
+
+.team-card {
+transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+position: relative;
+will-change: transform;
+transform: translate3d(0, 0, 0);
+}
+
+.team-card:hover {
+transform: translateY(-10px);
+}
+
+.team-card .profile-image {
+transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.team-card:hover .profile-image {
+transform: scale(1.05);
+box-shadow: 0 0 30px rgba(121, 30, 255, 0.4);
+}
+
+.glow-button {
+position: relative;
+overflow: hidden;
+min-height: 48px;
+touch-action: manipulation;
+will-change: transform;
+transform: translate3d(0, 0, 0);
+}
+
+.glow-button::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: left 0.5s;
+}
+
+.glow-button:hover::before {
+left: 100%;
+}
+
+.interactive-background {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(121, 30, 255, 0.1) 0%, transparent 50%);
+opacity: 0;
+transition: opacity 0.3s ease;
+pointer-events: none;
+}
+
+.section-hover:hover .interactive-background {
+opacity: 1;
+}
+
+.badge-pulse {
+animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+0%, 100% {
+box-shadow: 0 0 0 0 rgba(121, 30, 255, 0.4);
+}
+50% {
+box-shadow: 0 0 0 10px rgba(121, 30, 255, 0);
+}
+}
+
+/* MOBILE OPTIMIZATIONS - Disable heavy effects and simplify /
+@media (hover: none) and (pointer: coarse) {
+/ Hide ALL desktop cursor effects */
+
+{
+cursor: auto !important;
+}
+.motion-blur-box,
+.cursor-dot,
+.cursor-ring {
+display: none !important;
+}
+
+/* Disable ALL heavy animations on mobile */
+.animated-gradient,
+.badge-pulse,
+.pulseGlow,
+.wiggle,
+.bounce {
+animation: none !important;
+}
+
+/* Hide complex background effects */
+.floating-particles,
+.particle,
+.parallax-bg,
+.interactive-background {
+display: none !important;
+}
+
+/* Hide mouse indicator and SVG on mobile */
+.mouse-indicator {
+display: none !important;
+}
+
+.hero-svg {
+display: none !important;
+}
+
+/* Show mobile hero text */
+.mobile-hero-text {
+display: block !important;
+}
+
+/* Disable hover effects that cause glitches */
+.magnetic-card:hover,
+.team-card:hover,
+.glow-hover:hover {
+transform: none !important;
+box-shadow: none !important;
+animation: none !important;
+}
+
+.magnetic-card::before {
+display: none !important;
+}
+
+.team-card:hover .profile-image {
+transform: none !important;
+box-shadow: none !important;
+}
+
+.glow-button:hover::before {
+display: none !important;
+}
+
+.section-hover:hover .interactive-background {
+opacity: 0 !important;
+}
+
+/* Disable backdrop blur for performance */
+.backdrop-blur-sm {
+backdrop-filter: none !important;
+-webkit-backdrop-filter: none !important;
+}
+
+/* Simplify gradients */
+.animated-gradient {
+background: linear-gradient(135deg, #254aee 0%, #791eff 100%) !important;
+}
+
+/* Remove complex shadows */
+.shadow-2xl {
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Ensure smooth touch interactions */
+.glow-button {
+-webkit-tap-highlight-color: rgba(121, 30, 255, 0.3);
+}
+
+/* Mobile menu button */
+.mobile-menu-button {
+display: block;
+position: fixed;
+top: 20px;
+right: 20px;
+z-index: 50;
+background: rgba(0, 0, 0, 0.8);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(121, 30, 255, 0.3);
+border-radius: 8px;
+padding: 12px;
+}
+
+.mobile-menu {
+position: fixed;
+top: 0;
+right: -100%;
+width: 250px;
+height: 100vh;
+background: rgba(0, 0, 0, 0.95);
+backdrop-filter: blur(20px);
+border-left: 1px solid rgba(121, 30, 255, 0.3);
+z-index: 40;
+transition: right 0.3s ease;
+padding: 80px 20px 20px;
+}
+
+.mobile-menu.open {
+right: 0;
+}
+
+.mobile-menu a {
+display: block;
+padding: 15px 0;
+color: #fff;
+text-decoration: none;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+font-size: 16px;
+}
+
+.mobile-menu a:hover {
+color: #791eff;
+}
+}
+
+/* Desktop-only effects */
+@media (hover: hover) and (pointer: fine) {
+
+{
+cursor: none;
+}
+.mobile-menu-button,
+.mobile-menu {
+display: none !important;
+}
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1024px) {
+.hero-svg {
+font-size: 100px;
+}
+}
+
+@media (max-width: 768px) {
+.hero-svg {
+font-size: 70px;
+}
+
+.mouse-indicator {
+font-size: 14px;
+top: 20px;
+}
+
+.scroll-indicator {
+font-size: 11px;
+bottom: 20px;
+}
+
+.hero-container {
+min-height: 500px;
+}
+
+.hero-svg {
+min-height: 500px;
+}
+
+.mobile-hero-text {
+font-size: 3rem;
+line-height: 1.1;
+}
+
+.magnetic-card {
+min-height: 240px;
+}
+
+/* Better touch targets */
+.glow-button {
+min-height: 52px;
+font-size: 16px;
+}
+}
+
+@media (max-width: 640px) {
+.hero-svg {
+font-size: 55px;
+}
+
+.mouse-indicator {
+font-size: 13px;
+top: 15px;
+padding: 0 15px;
+}
+
+.mouse-indicator .mouse-icon {
+font-size: 18px;
+}
+
+.scroll-indicator {
+font-size: 10px;
+bottom: 15px;
+}
+
+.mobile-hero-text {
+font-size: 2.5rem;
+line-height: 1.1;
+}
+
+.magnetic-card {
+min-height: 220px;
+}
+}
+
+@media (max-width: 480px) {
+.hero-svg {
+font-size: 45px;
+}
+
+.mouse-indicator {
+font-size: 12px;
+top: 15px;
+}
+
+.mouse-indicator .mouse-icon {
+font-size: 16px;
+}
+
+.scroll-indicator {
+font-size: 10px;
+bottom: 15px;
+}
+
+.hero-container {
+min-height: 450px;
+}
+
+.hero-svg {
+min-height: 450px;
+}
+
+.mobile-hero-text {
+font-size: 2rem;
+line-height: 1.1;
+}
+
+.magnetic-card {
+min-height: 200px;
+}
+
+/* Better spacing */
+section {
+padding-top: 60px;
+padding-bottom: 60px;
+}
+}
+
+@media (max-width: 360px) {
+.hero-svg {
+font-size: 35px;
+}
+
+.mouse-indicator {
+font-size: 11px;
+top: 10px;
+padding: 0 10px;
+}
+
+.mouse-indicator .text-sm {
+font-size: 10px;
+}
+
+.mobile-hero-text {
+font-size: 1.75rem;
+line-height: 1.1;
+}
+}
+
+/* Walkthrough Section Styles */
+.walkthrough-container {
+scrollbar-width: thin;
+scrollbar-color: rgba(121, 30, 255, 0.3) transparent;
+}
+
+.walkthrough-container::-webkit-scrollbar {
+height: 8px;
+}
+
+.walkthrough-container::-webkit-scrollbar-track {
+background: rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+}
+
+.walkthrough-container::-webkit-scrollbar-thumb {
+background: linear-gradient(90deg, #791eff, #254aee);
+border-radius: 4px;
+}
+
+.walkthrough-container::-webkit-scrollbar-thumb:hover {
+background: linear-gradient(90deg, #254aee, #791eff);
+}
+
+.walkthrough-step {
+transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.phone-mockup img {
+max-width: 280px;
+transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+}
+
+.step-number {
+transition: all 0.3s ease;
+}
+
+/* Mobile responsive adjustments for walkthrough */
+@media (max-width: 768px) {
+.walkthrough-container {
+margin-left: -16px;
+margin-right: -16px;
+padding-left: 16px;
+padding-right: 16px;
+}
+
+.walkthrough-step {
+width: 300px;
+}
+
+.phone-mockup img {
+max-width: 240px;
+}
+
+.step-number {
+width: 40px;
+height: 40px;
+font-size: 16px;
+}
+}
+
+@media (max-width: 640px) {
+.walkthrough-step {
+width: 260px;
+}
+
+.phone-mockup img {
+max-width: 200px;
+}
+
+.step-number {
+width: 36px;
+height: 36px;
+font-size: 14px;
+}
+}
+</style>
+
+</head>
+
+<body class="bg-black text-white font-sans overflow-x-hidden">
+
+<!-- Mobile Menu Button (Mobile Only) -->
+
+<button class="mobile-menu-button" onclick="toggleMobileMenu()">
+
+<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+
+</svg>
+
+</button>
+
+<!-- Mobile Menu (Mobile Only) -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="#hero-section" onclick="closeMobileMenu()">Home</a>
+
+<a href="#vision-section" onclick="closeMobileMenu()">Vision</a>
+
+<a href="#walkthrough-section" onclick="closeMobileMenu()">How It Works</a>
+
+<a href="#internships-section" onclick="closeMobileMenu()">Internships</a>
+
+<a href="#team-section" onclick="closeMobileMenu()">Team</a>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSes6InavSOASTXe8iz_G559PqHzXPXvXaNnfeARdPO1az3Qvw/viewform?usp=sharing&ouid=104974665935445196555" target="_blank" onclick="closeMobileMenu()">Join Waitlist</a>
+
+</div>
+
+<!-- Custom Cursor Elements (Desktop Only) -->
+
+<div class="cursor-dot"></div>
+
+<div class="cursor-ring"></div>
+
+<div class="motion-blur-container"></div>
+
+<!-- Animated Hero Section -->
+
+<section class="hero-container" id="hero-section">
+
+<svg viewBox="0 0 1280 720" class="hero-svg">
+
+<defs>
+
+<mask id="maskLeft">
+
+<rect x="-50%" width="100%" height="100%" fill="#fff"/>
+
+</mask>
+
+<mask id="maskRight">
+
+<rect x="50%" width="100%" height="100%" fill="#fff"/>
+
+</mask>
+
+<linearGradient id="leftGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+
+<stop offset="0%" style="stop-color:#791eff;stop-opacity:1" />
+
+<stop offset="100%" style="stop-color:#254aee;stop-opacity:1" />
+
+</linearGradient>
+
+<linearGradient id="rightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+
+<stop offset="0%" style="stop-color:#254aee;stop-opacity:0.6" />
+
+<stop offset="100%" style="stop-color:#791eff;stop-opacity:0.6" />
+
+</linearGradient>
+
+</defs>
+
+<g font-size="150">
+
+<g mask="url(#maskLeft)" fill="url(#leftGradient)" class="left">
+
+<text x="640" y="240" text-anchor="middle">TAKE</text>
+
+<text x="640" y="380" text-anchor="middle">YOUR</text>
+
+<text x="640" y="520" text-anchor="middle">NEXT STEP</text>
+
+</g>
+
+<g mask="url(#maskRight)" fill="url(#rightGradient)" class="right">
+
+<text x="640" y="240" text-anchor="middle">TAKE</text>
+
+<text x="640" y="380" text-anchor="middle">YOUR</text>
+
+<text x="640" y="520" text-anchor="middle">NEXT STEP</text>
+
+</g>
+
+</g>
+
+</svg>
+
+<!-- Mobile Hero Text -->
+
+<div class="mobile-hero-text">
+
+<div>TAKE</div>
+
+<div>YOUR</div>
+
+<div>NEXT STEP</div>
+
+</div>
+
+<div class="mouse-indicator">
+
+<div class="text-center">
+
+<span class="mouse-icon">🖱️</span>
+
+<div>Move your mouse left & right</div>
+
+<div class="text-sm mt-1 opacity-70">to see the full animation</div>
+
+</div>
+
+</div>
+
+<div class="scroll-indicator">
+
+<div class="text-center">
+
+<div class="mb-2">↓</div>
+
+<div>Scroll to explore</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Pre-launch Badge Section -->
+
+<section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-black section-hover">
+
+<div class="interactive-background"></div>
+
+<div class="floating-particles">
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+</div>
+
+<div class="absolute inset-0 animated-gradient opacity-10"></div>
+
+<div class="text-center max-w-4xl mx-auto relative z-20">
+
+<div class="inline-flex items-center px-4 py-3 sm:px-6 sm:py-3 rounded-full border border-purple/30 bg-purple/10 mb-6 sm:mb-8 badge-pulse text-reveal">
+
+<span class="text-sm sm:text-base text-gray-300">The platform hasn't launched yet -- be among the first to join</span>
+
+</div>
+
+<p class="text-base sm:text-lg lg:text-xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed text-reveal px-4">
+
+NextStep is launching soon -- a new platform built to help high school students find internships, volunteer work, and real-world experience.
+
+</p>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSes6InavSOASTXe8iz_G559PqHzXPXvXaNnfeARdPO1az3Qvw/viewform?usp=sharing&ouid=104974665935445196555" target="_blank" class="inline-block gradient-bg text-white px-6 sm:px-8 py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg transition-all duration-300 glow-hover transform hover:scale-105 glow-button text-reveal">
+
+Join the Waitlist
+
+</a>
+
+</div>
+
+</section>
+
+<!-- Our Idea Section -->
+
+<section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden section-hover" id="vision-section">
+
+<div class="interactive-background"></div>
+
+<div class="absolute inset-0 bg-gradient-to-br from-purple/5 via-transparent to-blue/5"></div>
+
+<div class="max-w-4xl mx-auto relative z-10">
+
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 sm:mb-6 text-reveal">
+
+The Vision Behind NextStep
+
+</h2>
+
+<div class="bg-gray-900/30 backdrop-blur-sm border border-gray-800 rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl text-reveal hover:border-purple/30 transition-all duration-500">
+
+<p class="text-base sm:text-lg text-gray-300 leading-relaxed text-center">
+
+High school students are full of talent, curiosity, and drive--but often lack access to real-world experiences that help them grow. At NextStep, we're building a platform that bridges this gap. Our goal is to empower students by connecting them with internships, volunteer work, and personal growth opportunities tailored to their skills, goals, and dreams. Whether you're preparing for college, building your resume, or exploring what inspires you, NextStep is here to make your next move clear, meaningful, and achievable.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Product Walkthrough Section -->
+
+<section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden section-hover" id="walkthrough-section">
+
+<div class="interactive-background"></div>
+
+<div class="floating-particles">
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+</div>
+
+<div class="max-w-7xl mx-auto">
+
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-3 sm:mb-4 text-reveal">
+
+How NextStep Works
+
+</h2>
+
+<p class="text-gray-400 text-center mb-8 sm:mb-12 text-reveal px-4">Take a quick tour through the app experience</p>
+
+<!-- Walkthrough Container -->
+
+<div class="walkthrough-container overflow-x-auto pb-8">
+
+<div class="flex gap-12 sm:gap-16 min-w-max px-4">
+
+<!-- Step 1: Explore -->
+
+<div class="walkthrough-step flex-shrink-0 w-72 sm:w-80 text-reveal">
+
+<div class="mb-8">
+
+<div class="flex justify-center">
+
+<img src="https://pfst.cf2.poecdn.net/base/image/5af784a6296b8f1b3df396e70b2486fd0f213e081c933466206cd43c355fe85f?w=1080&h=1920"
+
+alt="Explore Opportunities"
+
+class="w-56 h-auto rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
+
+</div>
+
+</div>
+
+<div class="text-center">
+
+<h3 class="text-xl sm:text-2xl font-semibold mb-3 text-white">Explore Opportunities</h3>
+
+<p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+
+Start your journey by discovering what's out there. Search and filter internships, volunteering, and more by keyword, skill, or category.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- Step 2: Preferences -->
+
+<div class="walkthrough-step flex-shrink-0 w-72 sm:w-80 text-reveal">
+
+<div class="mb-8">
+
+<div class="flex justify-center">
+
+<img src="https://pfst.cf2.poecdn.net/base/image/980182a8ef059873c4e096a65c822cebd03afbeb6f6d81ed5292c83e4552f8a5?w=1080&h=1920"
+
+alt="Opportunity Preferences"
+
+class="w-56 h-auto rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
+
+</div>
+
+</div>
+
+<div class="text-center">
+
+<h3 class="text-xl sm:text-2xl font-semibold mb-3 text-white">Customize Your Experience</h3>
+
+<p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+
+Set your availability, location, interests, awards, and goals to personalize results that match your unique profile.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- Step 3: Applications -->
+
+<div class="walkthrough-step flex-shrink-0 w-72 sm:w-80 text-reveal">
+
+<div class="mb-8">
+
+<div class="flex justify-center">
+
+<img src="https://pfst.cf2.poecdn.net/base/image/2da348d077ee7d1a09d98d2c8f3f62f632c8c5c88a8234df8109a99e0eb64f70?w=1080&h=1920"
+
+alt="My Applications"
+
+class="w-56 h-auto rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
+
+</div>
+
+</div>
+
+<div class="text-center">
+
+<h3 class="text-xl sm:text-2xl font-semibold mb-3 text-white">Track Everything in One Place</h3>
+
+<p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+
+See submitted applications, stay organized, and follow your progress from application to acceptance.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- Step 4: Analytics -->
+
+<div class="walkthrough-step flex-shrink-0 w-72 sm:w-80 text-reveal">
+
+<div class="mb-8">
+
+<div class="flex justify-center">
+
+<img src="https://pfst.cf2.poecdn.net/base/image/474b944b72869fa6b3e44b0c1e2fa72814e04f60e2b8c6dfa3182dafcd0e7268?w=1080&h=1920"
+
+alt="Analytics & Progress"
+
+class="w-56 h-auto rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
+
+</div>
+
+</div>
+
+<div class="text-center">
+
+<h3 class="text-xl sm:text-2xl font-semibold mb-3 text-white">Stay Motivated. See Your Growth</h3>
+
+<p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+
+View streaks, points, achievements, and overall progress with a gamified, encouraging layout.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Bonus Feature -->
+
+<div class="mt-12 sm:mt-16 text-center text-reveal">
+
+<div class="bg-gray-900/30 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 sm:p-8 max-w-2xl mx-auto hover:border-purple/30 transition-all duration-500">
+
+<h3 class="text-lg sm:text-xl font-semibold mb-3 text-white">Stand Out. Get Featured</h3>
+
+<p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+
+Exceptional users who make the most of their NextStep journey may be highlighted on our official website and social channels.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Internship Roles Section -->
+
+<section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden section-hover" id="internships-section">
+
+<div class="interactive-background"></div>
+
+<div class="floating-particles">
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+</div>
+
+<div class="max-w-6xl mx-auto">
+
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-3 sm:mb-4 text-reveal">
+
+<span class="mr-3">🚀</span>Internship Roles -- Apply Now
+
+</h2>
+
+<p class="text-gray-400 text-center mb-8 sm:mb-12 text-reveal px-4">Join our team and help build the future of student opportunities</p>
+
+<div class="grid sm:grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+
+<!-- Outreach Intern Card -->
+
+<div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple/50 magnetic-card text-reveal internship-card">
+
+<div class="text-4xl mb-4">📣</div>
+
+<h3 class="text-lg sm:text-xl font-semibold mb-3">Outreach Intern</h3>
+
+<p class="text-gray-400 mb-4 leading-relaxed text-sm sm:text-base">
+
+Help us connect with potential partners and investors. Includes email outreach, lead tracking, and networking.
+
+</p>
+
+<div class="flex flex-wrap items-center justify-between mb-4 gap-2">
+
+<span class="bg-blue/20 text-blue px-3 py-1 rounded-full text-xs sm:text-sm">Remote</span>
+
+<span class="bg-purple/20 text-purple px-3 py-1 rounded-full text-xs sm:text-sm">Part-time</span>
+
+</div>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSe1ZZF8PbO_GRnH93RSwWL4uDwSQh4Y8x01IV2fF6toiqP3dA/viewform?usp=dialog" target="_blank" class="block w-full bg-purple hover:bg-purple/80 text-white py-3 rounded-xl font-medium transition-colors duration-300 text-center glow-button text-sm sm:text-base">
+
+Apply Now
+
+</a>
+
+</div>
+
+<!-- Marketing & SMMA Intern Card -->
+
+<div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue/50 magnetic-card text-reveal internship-card">
+
+<div class="text-4xl mb-4">📱</div>
+
+<h3 class="text-lg sm:text-xl font-semibold mb-3">Marketing & SMMA Intern</h3>
+
+<p class="text-gray-400 mb-4 leading-relaxed text-sm sm:text-base">
+
+Help grow our brand on social media. Includes making posts, running campaigns, and building engagement.
+
+</p>
+
+<div class="flex flex-wrap items-center justify-between mb-4 gap-2">
+
+<span class="bg-blue/20 text-blue px-3 py-1 rounded-full text-xs sm:text-sm">Remote</span>
+
+<span class="bg-purple/20 text-purple px-3 py-1 rounded-full text-xs sm:text-sm">Part-time</span>
+
+</div>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScFDcgK9SPhMtVjHQOidXoMsOI40Pf9NhwxWrx92KVvG8662w/viewform?usp=dialog" target="_blank" class="block w-full bg-blue hover:bg-blue/80 text-white py-3 rounded-xl font-medium transition-colors duration-300 text-center glow-button text-sm sm:text-base">
+
+Apply Now
+
+</a>
+
+</div>
+
+<!-- Developer Intern Card -->
+
+<div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple/50 magnetic-card text-reveal internship-card">
+
+<div class="text-4xl mb-4">💻</div>
+
+<h3 class="text-lg sm:text-xl font-semibold mb-3">Developer Intern</h3>
+
+<p class="text-gray-400 mb-4 leading-relaxed text-sm sm:text-base">
+
+Contribute to building the actual app. Open to frontend or backend students eager to learn and ship.
+
+</p>
+
+<div class="flex flex-wrap items-center justify-between mb-4 gap-2">
+
+<span class="bg-blue/20 text-blue px-3 py-1 rounded-full text-xs sm:text-sm">Remote</span>
+
+<span class="bg-purple/20 text-purple px-3 py-1 rounded-full text-xs sm:text-sm">Part-time</span>
+
+</div>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScKGF3Z-8TN--bMHMos535U-WcTMu1PZgIPibxIisFMM4EPFQ/viewform?usp=dialog" target="_blank" class="block w-full gradient-bg text-white py-3 rounded-xl font-medium transition-all duration-300 hover:opacity-90 text-center glow-button text-sm sm:text-base">
+
+Apply Now
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Team Section -->
+
+<section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden section-hover" id="team-section">
+
+<div class="interactive-background"></div>
+
+<div class="floating-particles">
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+<div class="particle"></div>
+
+</div>
+
+<div class="max-w-6xl mx-auto">
+
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-3 sm:mb-4 text-reveal">
+
+Meet the Team
+
+</h2>
+
+<p class="text-gray-400 text-center mb-8 sm:mb-12 text-reveal px-4">The passionate students building NextStep</p>
+
+<div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+<!-- Mustafa Hameed -->
+
+<div class="text-center team-card text-reveal">
+
+<div class="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 rounded-full gradient-bg p-1 hover:scale-110 transition-all duration-500 profile-image">
+
+<img src="https://pfst.cf2.poecdn.net/base/image/c6f67c74a6f22f577c0d5f6acb792409be2b429ea3cb1b27be319b743cb3de3b?w=451&h=603" alt="Mustafa Hameed" class="w-full h-full rounded-full object-cover">
+
+</div>
+
+<h3 class="text-lg sm:text-xl font-semibold mb-2">Mustafa Hameed</h3>
+
+<p class="text-purple text-sm mb-2">Founder</p>
+
+<p class="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xs mx-auto px-2">
+
+Driven high school founder passionate about building tools that unlock opportunity. Leads the vision behind NextStep with deep interest in product design, education access, and startup innovation.
+
+</p>
+
+</div>
+
+<!-- Mekyle Alam -->
+
+<div class="text-center team-card text-reveal">
+
+<div class="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 rounded-full gradient-bg p-1 hover:scale-110 transition-all duration-500 profile-image">
+
+<img src="https://pfst.cf2.poecdn.net/base/image/d30873b8e322a4911cf96465d825a710b7f8b70ce9d30985b306cd31acbde4a3?w=984&h=1046" alt="Mekyle Alam" class="w-full h-full rounded-full object-cover">
+
+</div>
+
+<h3 class="text-lg sm:text-xl font-semibold mb-2">Mekyle Alam</h3>
+
+<p class="text-purple text-sm mb-2">Founder</p>
+
+<p class="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xs mx-auto px-2">
+
+Passionate young entrepreneur and founder of UnFound lifestyle brand. Brings fresh perspective, strategic thinking, and drive to build meaningful modern ventures.
+
+</p>
+
+</div>
+
+<!-- Usaid Hussain -->
+
+<div class="text-center team-card text-reveal">
+
+<div class="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 rounded-full gradient-bg p-1 hover:scale-110 transition-all duration-500 profile-image">
+
+<img src="https://pfst.cf2.poecdn.net/base/image/7e59f1b75ada34de90857d520b4e7c0edfcbf8f6f7e357600e42c2a20ef7fd59?w=360&h=346" alt="Usaid Hussain" class="w-full h-full rounded-full object-cover">
+
+</div>
+
+<h3 class="text-lg sm:text-xl font-semibold mb-2">Usaid Hussain</h3>
+
+<p class="text-purple text-sm mb-2">Founder</p>
+
+<p class="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xs mx-auto px-2">
+
+Creative entrepreneur and co-founder focused on innovation and growth. Brings strategic vision and leadership to help students unlock their potential through NextStep.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Footer -->
+
+<footer class="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800 relative overflow-hidden section-hover">
+
+<div class="interactive-background"></div>
+
+<div class="max-w-6xl mx-auto">
+
+<div class="flex flex-col items-center space-y-4 sm:space-y-6">
+
+<!-- Social Icons -->
+
+<div class="flex flex-wrap justify-center space-x-6 sm:space-x-8">
+
+<a href="https://www.instagram.com/officialnext.step/" target="_blank" class="text-gray-400 hover:text-purple transition-all duration-300 text-sm font-medium hover:scale-110 glow-button py-2 px-2">
+
+Instagram
+
+</a>
+
+<a href="#" class="text-gray-400 hover:text-blue transition-all duration-300 text-sm font-medium hover:scale-110 glow-button py-2 px-2">
+
+TikTok
+
+</a>
+
+<a href="https://www.linkedin.com/company/official-nextstep/" target="_blank" class="text-gray-400 hover:text-purple transition-all duration-300 text-sm font-medium hover:scale-110 glow-button py-2 px-2">
+
+LinkedIn
+
+</a>
+
+</div>
+
+<!-- Copyright -->
+
+<div class="text-center space-y-2">
+
+<p class="text-gray-400 text-sm">Built by Students, For Students</p>
+
+<p class="text-gray-300 text-sm font-medium">© 2025 NextStep</p>
+
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+// Register GSAP ScrollTrigger
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Dark mode support
+
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+
+document.documentElement.classList.add('dark');
+
+}
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+
+if (event.matches) {
+
+document.documentElement.classList.add('dark');
+
+} else {
+
+document.documentElement.classList.remove('dark');
+
+}
+
+});
+
+// Mobile Menu Functions
+
+function toggleMobileMenu() {
+
+const menu = document.getElementById('mobileMenu');
+
+menu.classList.toggle('open');
+
+}
+
+function closeMobileMenu() {
+
+const menu = document.getElementById('mobileMenu');
+
+menu.classList.remove('open');
+
+}
+
+// Close mobile menu when clicking outside
+
+document.addEventListener('click', function(event) {
+
+const menu = document.getElementById('mobileMenu');
+
+const button = document.querySelector('.mobile-menu-button');
+
+if (!menu.contains(event.target) && !button.contains(event.target)) {
+
+menu.classList.remove('open');
+
+}
+
+});
+
+// Main initialization
+
+document.addEventListener('DOMContentLoaded', function() {
+
+const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+// Desktop-only effects
+
+if (isDesktop) {
+
+// Hero Animation Setup
+
+const tl = gsap.timeline({
+
+defaults: {
+
+duration: 2,
+
+yoyo: true,
+
+ease: 'power2.inOut'
+
+}
+
+})
+
+.fromTo('.left, .right', {
+
+svgOrigin: '640 360',
+
+skewY: (i) => [-30, 15][i],
+
+scaleX: (i) => [0.6, 0.85][i],
+
+x: 200
+
+}, {
+
+skewY: (i) => [-15, 30][i],
+
+scaleX: (i) => [0.85, 0.6][i],
+
+x: -200
+
+})
+
+.play(0.5);
+
+// Text sliding animation
+
+const tl2 = gsap.timeline();
+
+document.querySelectorAll('text').forEach((t, i) => {
+
+tl2.add(
+
+gsap.fromTo(t, {
+
+xPercent: -100,
+
+x: 700
+
+}, {
+
+duration: 1,
+
+xPercent: 0,
+
+x: 0,
+
+ease: 'sine.inOut'
+
+}),
+
+i % 3 * 0.2
+
+);
+
+});
+
+// Mouse movement control
+
+window.addEventListener('pointermove', (e) => {
+
+tl.pause();
+
+tl2.pause();
+
+gsap.to([tl, tl2], {
+
+duration: 2,
+
+ease: 'power4',
+
+progress: e.clientX / window.innerWidth
+
+});
+
+});
+
+// Magnetic effect for cards
+
+document.querySelectorAll('.magnetic-card').forEach(card => {
+
+card.addEventListener('mousemove', (e) => {
+
+const rect = card.getBoundingClientRect();
+
+const x = e.clientX - rect.left;
+
+const y = e.clientY - rect.top;
+
+const centerX = rect.width / 2;
+
+const centerY = rect.height / 2;
+
+const deltaX = (x - centerX) / centerX;
+
+const deltaY = (y - centerY) / centerY;
+
+gsap.to(card, {
+
+duration: 0.3,
+
+x: deltaX * 5,
+
+y: deltaY * 5,
+
+rotationX: deltaY * 2,
+
+rotationY: deltaX * 2,
+
+ease: 'power2.out',
+
+transformPerspective: 1000
+
+});
+
+});
+
+card.addEventListener('mouseleave', () => {
+
+gsap.to(card, {
+
+duration: 0.5,
+
+x: 0,
+
+y: 0,
+
+rotationX: 0,
+
+rotationY: 0,
+
+ease: 'power2.out'
+
+});
+
+});
+
+});
+
+// Interactive background following mouse
+
+document.querySelectorAll('.section-hover').forEach(section => {
+
+section.addEventListener('mousemove', (e) => {
+
+const rect = section.getBoundingClientRect();
+
+const x = ((e.clientX - rect.left) / rect.width) * 100;
+
+const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+const bg = section.querySelector('.interactive-background');
+
+if (bg) {
+
+bg.style.setProperty('--mouse-x', x + '%');
+
+bg.style.setProperty('--mouse-y', y + '%');
+
+}
+
+});
+
+});
+
+// Floating particles
+
+function createParticles() {
+
+document.querySelectorAll('.floating-particles').forEach(container => {
+
+setInterval(() => {
+
+const particle = document.createElement('div');
+
+particle.className = 'particle';
+
+particle.style.left = Math.random() * 100 + '%';
+
+particle.style.animationDelay = Math.random() * 2 + 's';
+
+container.appendChild(particle);
+
+setTimeout(() => {
+
+particle.remove();
+
+}, 12000);
+
+}, 1000);
+
+});
+
+}
+
+createParticles();
+
+// Motion Blur Cursor Effect
+
+initMotionBlurEffect();
+
+}
+
+// Universal scroll-triggered animations (work on mobile too)
+
+gsap.utils.toArray('.text-reveal').forEach((element, i) => {
+
+// Check if element is in team section for faster animation
+
+const isTeamSection = element.closest('#team-section');
+
+gsap.fromTo(element, {
+
+opacity: 0,
+
+y: 30
+
+}, {
+
+opacity: 1,
+
+y: 0,
+
+duration: 0.8,
+
+ease: 'power2.out',
+
+scrollTrigger: {
+
+trigger: element,
+
+start: isTeamSection ? 'top 90%' : 'top 85%', // Earlier trigger for team section
+
+end: 'bottom 15%',
+
+toggleActions: 'play none none reverse'
+
+},
+
+delay: isTeamSection ? i * 0.05 : i * 0.1 // Faster stagger for team section
+
+});
+
+});
+
+});
+
+// Motion Blur Cursor Effect (Desktop Only)
+
+function initMotionBlurEffect() {
+
+const motionBlurEffect = {
+
+boxes: [],
+
+mousePosition: { x: 0, y: 0 },
+
+isMoving: false,
+
+init() {
+
+this.createBoxes();
+
+this.setupEventListeners();
+
+this.animate();
+
+},
+
+createBoxes() {
+
+const container = document.querySelector('.motion-blur-container');
+
+for (let i = 0; i < 25; i++) {
+
+const box = document.createElement('div');
+
+box.className = 'motion-blur-box';
+
+container.appendChild(box);
+
+this.boxes.push({
+
+element: box,
+
+x: 0,
+
+y: 0,
+
+targetX: 0,
+
+targetY: 0,
+
+delay: i * 0.02,
+
+speed: 0.1 + (i * 0.005)
+
+});
+
+}
+
+},
+
+setupEventListeners() {
+
+const cursorDot = document.querySelector('.cursor-dot');
+
+const cursorRing = document.querySelector('.cursor-ring');
+
+document.addEventListener('mousemove', (e) => {
+
+this.mousePosition.x = e.clientX;
+
+this.mousePosition.y = e.clientY;
+
+this.isMoving = true;
+
+// Update custom cursor
+
+cursorDot.style.left = (e.clientX - 4) + 'px';
+
+cursorDot.style.top = (e.clientY - 4) + 'px';
+
+cursorRing.style.left = (e.clientX - 20) + 'px';
+
+cursorRing.style.top = (e.clientY - 20) + 'px';
+
+clearTimeout(this.stopTimeout);
+
+this.stopTimeout = setTimeout(() => {
+
+this.isMoving = false;
+
+}, 150);
+
+});
+
+// Enhanced hover effects for interactive elements
+
+document.querySelectorAll('a, button, [role="button"], .magnetic-card').forEach(el => {
+
+el.addEventListener('mouseenter', () => {
+
+cursorRing.style.transform = 'scale(1.5)';
+
+cursorRing.style.borderColor = 'rgba(121, 30, 255, 0.6)';
+
+cursorDot.style.transform = 'scale(1.5)';
+
+});
+
+el.addEventListener('mouseleave', () => {
+
+cursorRing.style.transform = 'scale(1)';
+
+cursorRing.style.borderColor = 'rgba(121, 30, 255, 0.3)';
+
+cursorDot.style.transform = 'scale(1)';
+
+});
+
+});
+
+},
+
+animate() {
+
+this.boxes.forEach((box, index) => {
+
+if (this.isMoving) {
+
+box.targetX = this.mousePosition.x - 10;
+
+box.targetY = this.mousePosition.y - 10;
+
+box.x += (box.targetX - box.x) * box.speed;
+
+box.y += (box.targetY - box.y) * box.speed;
+
+const distance = Math.sqrt(
+
+Math.pow(box.targetX - box.x, 2) +
+
+Math.pow(box.targetY - box.y, 2)
+
+);
+
+const opacity = Math.max(0, Math.min(1, (1 - index / this.boxes.length) * (1 - distance / 100)));
+
+box.element.style.opacity = opacity;
+
+box.element.classList.add('active');
+
+} else {
+
+const currentOpacity = parseFloat(box.element.style.opacity) || 0;
+
+box.element.style.opacity = Math.max(0, currentOpacity - 0.05);
+
+if (currentOpacity <= 0) {
+
+box.element.classList.remove('active');
+
+}
+
+}
+
+box.element.style.left = box.x + 'px';
+
+box.element.style.top = box.y + 'px';
+
+const scale = 0.3 + (1 - index / this.boxes.length) * 0.7;
+
+box.element.style.transform = `scale(${scale})`;
+
+});
+
+requestAnimationFrame(() => this.animate());
+
+}
+
+};
+
+motionBlurEffect.init();
+
+}
+
+// Smooth scrolling for anchor links
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+anchor.addEventListener('click', function (e) {
+
+e.preventDefault();
+
+const target = document.querySelector(this.getAttribute('href'));
+
+if (target) {
+
+// Close mobile menu if open
+
+closeMobileMenu();
+
+target.scrollIntoView({
+
+behavior: 'smooth',
+
+block: 'start'
+
+});
+
+}
+
+});
+
+});
+
+// Performance optimization for low-end devices
+
+if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+
+document.documentElement.style.setProperty('--animation-duration', '0.5s');
+
+}
+
+</script>
+
+</body>
+
+</html>
