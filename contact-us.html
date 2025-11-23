@@ -47,9 +47,68 @@
         .gradient-bg {
             background: linear-gradient(135deg, #5D5CDE 0%, #3B82F6 100%);
         }
+
+        /* Navbar styling */
+        .nextstep-navbar {
+            background: #ffffff;
+            backdrop-filter: blur(16px);
+            border-radius: 50px;
+            padding: 0.75rem 2rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            margin: 1.5rem auto;
+            width: fit-content;
+        }
+
+        .nextstep-navbar a {
+            transition: color 0.3s ease;
+        }
+
+        .nextstep-navbar a:hover {
+            color: #000;
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .nextstep-navbar {
+                max-width: calc(100vw - 3rem) !important;
+                margin: 1.5rem 1.5rem !important;
+                padding: 0.75rem 1rem !important;
+            }
+
+            .nextstep-navbar .hidden.md\:flex {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
+    <!-- Navbar -->
+    <header class="flex justify-center" role="banner">
+        <nav class="nextstep-navbar flex items-center space-x-8" role="navigation" aria-label="Main navigation">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+                <img src="https://nextstepofficial.com/NextStepLogo.png" alt="NextStep Logo - Student Internships and AI Productivity Tools Platform" class="w-8 h-8 rounded-full" width="32" height="32" loading="eager" fetchpriority="high">
+                <span class="font-bold text-lg text-black">NextStep</span>
+            </div>
+
+            <!-- Nav links with comprehensive title attributes -->
+            <div class="hidden md:flex space-x-6 text-gray-700">
+                <a href="https://www.nextstepofficial.com/features.html" aria-label="Explore NextStep's features and AI tools" title="Discover all NextStep features including AI Note Taker, Career Counselor, and Passion Project Generator">Features</a>
+                <a href="https://www.nextstepofficial.com/contact-us.html" aria-label="Contact NextStep team" title="Get in touch with NextStep for support, partnerships, or questions">Contact Us</a>
+                <a href="https://www.nextstepofficial.com/ourteam.html" aria-label="Learn why NextStep is the right choice" title="Discover why students and professionals choose NextStep for internships and AI productivity tools">Why Us</a>
+                <a href="https://apps.apple.com/us/app/nextstep/id6749652297" aria-label="Download NextStep app" title="Download NextStep app for iOS to access internships, scholarships, and AI productivity tools">Download</a>
+                <a href="https://www.nextstepofficial.com/blog.html" aria-label="Read NextStep blog" title="Read the latest articles, tips, and insights from NextStep about careers, internships, and productivity">Blog</a>
+            </div>
+
+            <!-- Right button -->
+            <div>
+                <a href="https://nextstepofficial.com/businesses.html" class="bg-black text-white px-4 py-2 rounded-full text-sm hover:opacity-80" aria-label="NextStep for businesses and employers" title="NextStep partnership opportunities for employers to post internships and access our AI-powered talent pipeline">
+                    For Businesses
+                </a>
+            </div>
+        </nav>
+    </header>
+
     <!-- Header -->
     <header class="gradient-bg text-white py-16 px-4">
         <div class="max-w-4xl mx-auto text-center">
