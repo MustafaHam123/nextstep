@@ -86,6 +86,33 @@ For Businesses
 </div>
 </section>
 
+<!-- Why Nextstep Section -->
+<section class="why-nextstep-section bg-white py-20">
+  <div class="why-nextstep-container">
+    <h1 class="why-nextstep-title">Why Nextstep?</h1>
+
+    <div class="why-nextstep-item hidden-section">
+      <h2>Built by students who lived the struggle</h2>
+      <p>We created Nextstep because we were just like you — trying to find real opportunities, overwhelmed, and frustrated that everything helpful was either scattered or too expensive.</p>
+    </div>
+
+    <div class="why-nextstep-item hidden-section">
+      <h2>Same premium AI. A fraction of the price.</h2>
+      <p>Most platforms charge $20+ for the exact same AI models we use. We know most students (including us) can't afford that, so we priced Nextstep at <strong>$6.99</strong> — the lowest we can make it while still improving the platform.</p>
+    </div>
+
+    <div class="why-nextstep-item hidden-section">
+      <h2>We faced the same problems, so we built the solution</h2>
+      <p>We didn't build this as a company trying to sell you something. We built it as students who needed something that didn't exist — a place to find opportunities, get help fast, and grow.</p>
+    </div>
+
+    <div class="why-nextstep-item hidden-section">
+      <h2>Affordable, accessible, and student‑first</h2>
+      <p>We're not trying to maximize profit. Our goal is to remove barriers, not create them. If we had to pay $20/month for academic help, we wouldn't have had access — so we made sure you don't have to either.</p>
+    </div>
+  </div>
+</section>
+
 <style>
 /* Critical CSS for navbar */
 html{line-height:1.15;-webkit-text-size-adjust:100%}
@@ -364,6 +391,64 @@ background: linear-gradient(135deg, #6366f1, #8b5cf6);
 transform: scale(1.2);
 }
 
+/* Why Nextstep Section Styles */
+.why-nextstep-section {
+  padding: 80px 40px;
+  background: #ffffff;
+}
+
+.why-nextstep-container {
+  max-width: 720px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.why-nextstep-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+.why-nextstep-item {
+  background: #f8f9fb;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+
+.why-nextstep-item h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #2a2a2a;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+.why-nextstep-item p {
+  font-size: 16px;
+  line-height: 1.55;
+  color: #444;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+}
+
+.hidden-section {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.show-section {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
 /* Footer Styles */
 #footer {
     position: relative;
@@ -439,21 +524,6 @@ transform: scale(1.2);
 }
 
 @media (max-width: 768px) {
-    #footer {
-        flex-direction: column;
-        padding: 40px 20px;
-        text-align: center;
-        gap: 30px;
-    }
-    #footer .col {
-        min-width: auto;
-    }
-    #footer .social {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 768px) {
 .about-title {
 font-size: 4.5rem;
 }
@@ -506,6 +576,35 @@ left: -70px;
 
 .member-name::after {
 right: -70px;
+}
+
+.why-nextstep-section {
+padding: 60px 20px;
+}
+
+.why-nextstep-title {
+font-size: 28px;
+}
+
+.why-nextstep-item h2 {
+font-size: 20px;
+}
+
+.why-nextstep-item p {
+font-size: 15px;
+}
+
+#footer {
+flex-direction: column;
+padding: 40px 20px;
+text-align: center;
+gap: 30px;
+}
+#footer .col {
+min-width: auto;
+}
+#footer .social {
+justify-content: center;
 }
 }
 </style>
@@ -640,6 +739,18 @@ updateCarousel(currentIndex - 1);
 }
 }
 
+// Why Nextstep section scroll animation
+const sections = document.querySelectorAll('.hidden-section');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('show-section');
+}
+});
+}, { threshold: 0.2 });
+
+sections.forEach(sec => observer.observe(sec));
+
 // Initialize
 updateCarousel(0);
 </script>
@@ -699,6 +810,5 @@ document.documentElement.classList.remove('dark');
 });
 });
 </script>
-
 
 </body></html>
