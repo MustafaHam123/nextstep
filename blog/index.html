@@ -1,1 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextStep Blog - See What's New</title>
+<!-- TailwindCSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+/* Critical CSS for navbar */
+html{line-height:1.15;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
+*,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
+a{color:inherit;text-decoration:inherit}
+img{display:block;vertical-align:middle;max-width:100%;height:auto}
+
+/* Navbar styling - made white */
+.nextstep-navbar {
+background: rgba(255, 255, 255, 1);
+backdrop-filter: blur(16px);
+border-radius: 50px;
+padding: 0.75rem 2rem;
+box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+margin: 1.5rem auto;
+width: fit-content;
+}
+
+.nextstep-navbar a {
+transition: color 0.3s ease;
+}
+
+.nextstep-navbar a:hover {
+color: #000;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+.nextstep-navbar {
+max-width: calc(100vw - 3rem) !important;
+margin: 1.5rem 1.5rem !important;
+padding: 0.75rem 1rem !important;
+}
+
+.nextstep-navbar .hidden.md\:flex {
+display: none !important;
+}
+}
+
+/* Dark mode support */
+.dark .nextstep-navbar {
+background: rgba(255, 255, 255, 1);
+box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.dark .nextstep-navbar a:hover {
+color: #000;
+}
+
+/* Blue-purple gradient text */
+.gradient-text {
+background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+position: relative;
+line-height: 1.1;
+}
+
+/* Typewriter effect styles */
+#content {
+display: inline-block;
+position: relative;
+min-width: 200px;
+}
+
+.typewriter-text {
+background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+display: inline-block;
+}
+
+.typewriter-cursor {
+display: inline-block;
+background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+animation: blink 1s infinite;
+}
+
+@keyframes blink {
+0%, 50% { opacity: 1; }
+51%, 100% { opacity: 0; }
+}
+
+/* NextStep pill styling */
+.nextstep-pill {
+background: #000;
+color: white;
+padding: 0.5rem 1.25rem;
+border-radius: 9999px;
+font-size: 0.875rem;
+font-weight: 600;
+display: inline-block;
+margin-bottom: 1.5rem;
+}
+
+/* Gradient blur backgrounds */
+.gradient-blur-bg::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -25%;
+width: 150%;
+height: 200%;
+background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.06) 40%, transparent 70%);
+filter: blur(40px);
+z-index: -1;
+}
+
+.gradient-blur-bg::after {
+content: '';
+position: absolute;
+top: -30%;
+right: -20%;
+width: 120%;
+height: 150%;
+background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.06) 0%, rgba(59, 130, 246, 0.04) 40%, transparent 70%);
+filter: blur(60px);
+z-index: -1;
+}
+
+.gradient-blur-bg {
+position: relative;
+}
+
+/* Image glow effect */
+.image-glow-container {
+position: relative;
+display: inline-block;
+}
+
+.image-glow-container::before {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 80%;
+height: 60%;
+background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.1), transparent);
+filter: blur(30px);
+transform: translate(-50%, -30%);
+z-index: 0;
+border-radius: 50%;
+}
+</style>
+</head>
+
+<body class="bg-white text-black font-sans">
+<!-- Navbar -->
+<header class="flex justify-center" role="banner">
+<nav class="nextstep-navbar flex items-center space-x-8" role="navigation" aria-label="Main navigation">
+<!-- Logo -->
+<a href="https://www.nextstepofficial.com" class="flex items-center space-x-2">
+    <img src="https://www.nextstepofficial.com/NextStepLogo.png" alt="NextStep Logo" class="w-8 h-8 rounded-full">
+    <span class="font-bold text-lg">NextStep</span>
+</a>
+
+<!-- Nav links with comprehensive title attributes -->
+<div class="hidden md:flex space-x-6 text-gray-700">
+<a href="https://www.nextstepofficial.com/features.html" aria-label="Explore NextStep's features and AI tools" title="Discover all NextStep features including AI Note Taker, Career Counselor, and Passion Project Generator">Features</a>
+<a href="https://www.nextstepofficial.com/contact-us.html" aria-label="Contact NextStep team" title="Get in touch with NextStep for support, partnerships, or questions">Contact Us</a>
+<a href="https://www.nextstepofficial.com/ourteam.html" aria-label="Learn why NextStep is the right choice" title="Discover why students and professionals choose NextStep for internships and AI productivity tools">Why Us</a>
+<a href="https://apps.apple.com/us/app/nextstep/id6749652297" aria-label="Download NextStep app" title="Download NextStep app for iOS to access internships, scholarships, and AI productivity tools">Download</a>
+<a href="https://www.nextstepofficial.com/blog.html" aria-label="Read NextStep blog" title="Read the latest articles, tips, and insights from NextStep about careers, internships, and productivity">Blog</a>
+</div>
+
+<!-- Right button -->
+<div>
+<a href="https://nextstepofficial.com/businesses.html" class="bg-black text-white px-4 py-2 rounded-full text-sm hover:opacity-80" aria-label="NextStep for businesses and employers" title="NextStep partnership opportunities for employers to post internships and access our AI-powered talent pipeline">
+For Businesses
+</a>
+</div>
+</nav>
+</header>
+
+<!-- Hero Section -->
+<main class="container mx-auto px-6 py-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[65vh] gradient-blur-bg">
+<!-- Left side - Image -->
+<div class="flex justify-center lg:justify-start">
+<div class="image-glow-container">
+<img 
+    src="https://www.nextstepofficial.com/blog/BlogHome.png" 
+    alt="NextStep Blog Homepage" 
+    class="max-w-full h-auto rounded-lg shadow-lg relative z-10"
+>
+</div>
+</div>
+
+<!-- Right side - Content -->
+<div class="text-center lg:text-left">
+<!-- NextStep Pill -->
+<div class="nextstep-pill">
+NextStep
+</div>
+
+<!-- Main Heading with Blue-Purple Gradient and Typewriter Effect -->
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+<span class="text-black">See What's New with&thinsp;</span><span id="typewriter-container" class="gradient-text">
+    <span class="typewriter-text" id="typewriter-text">NextStep</span><span class="typewriter-cursor">|</span>
+</span>
+</h1>
+
+<!-- Description -->
+<p class="text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl">
+Discover what makes NextStep unique, explore more opportunities, and stay ahead.
+</p>
+</div>
+</div>
+</main>
+
+<!-- Recent Posts Section -->
+<section class="container mx-auto px-6 py-16">
+<!-- Section Title -->
+<h2 class="text-3xl md:text-4xl font-bold text-black mb-12 text-center">
+See our most recent posts:
+</h2>
+
+<!-- Posts Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+<!-- Post Card 1 -->
+<article class="blog-card group cursor-pointer">
+<div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group-hover:border-blue-200">
+<div class="h-48 relative overflow-hidden">
+<img src="https://picsum.photos/400/300?random=1" alt="Blog post image" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-black bg-opacity-20"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<span class="bg-black bg-opacity-30 px-3 py-1 rounded-full text-sm">AI Tools</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+How AI is Revolutionizing Note-Taking for Students
+</h3>
+<p class="text-gray-600 mb-4 leading-relaxed">
+Discover how NextStep's AI-powered note-taking features can transform your study sessions and boost productivity.
+</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">Dec 15, 2024</span>
+<span class="text-blue-600 text-sm font-medium group-hover:text-blue-700">Read More →</span>
+</div>
+</div>
+</div>
+</article>
+
+<!-- Post Card 2 -->
+<article class="blog-card group cursor-pointer">
+<div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group-hover:border-purple-200">
+<div class="h-48 relative overflow-hidden">
+<img src="https://picsum.photos/400/300?random=2" alt="Blog post image" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-black bg-opacity-20"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<span class="bg-black bg-opacity-30 px-3 py-1 rounded-full text-sm">Career Growth</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors">
+Landing Your Dream Internship: A Complete Guide
+</h3>
+<p class="text-gray-600 mb-4 leading-relaxed">
+Step-by-step strategies to find, apply for, and secure internships that will accelerate your career journey.
+</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">Dec 12, 2024</span>
+<span class="text-purple-600 text-sm font-medium group-hover:text-purple-700">Read More →</span>
+</div>
+</div>
+</div>
+</article>
+
+<!-- Post Card 3 -->
+<article class="blog-card group cursor-pointer">
+<div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group-hover:border-blue-200">
+<div class="h-48 relative overflow-hidden">
+<img src="https://picsum.photos/400/300?random=3" alt="Blog post image" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-black bg-opacity-20"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<span class="bg-black bg-opacity-30 px-3 py-1 rounded-full text-sm">Education</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+Maximizing Your Study Efficiency with Smart Scheduling
+</h3>
+<p class="text-gray-600 mb-4 leading-relaxed">
+Learn proven techniques to optimize your study schedule and achieve better results in less time.
+</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">Dec 10, 2024</span>
+<span class="text-blue-600 text-sm font-medium group-hover:text-blue-700">Read More →</span>
+</div>
+</div>
+</div>
+</article>
+
+<!-- Post Card 4 -->
+<article class="blog-card group cursor-pointer">
+<div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group-hover:border-green-200">
+<div class="h-48 relative overflow-hidden">
+<img src="https://picsum.photos/400/300?random=4" alt="Blog post image" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-black bg-opacity-20"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<span class="bg-black bg-opacity-30 px-3 py-1 rounded-full text-sm">Productivity</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">
+Building Effective Study Groups That Actually Work
+</h3>
+<p class="text-gray-600 mb-4 leading-relaxed">
+Transform your collaborative learning experience with these proven strategies for productive study groups.
+</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">Dec 8, 2024</span>
+<span class="text-green-600 text-sm font-medium group-hover:text-green-700">Read More →</span>
+</div>
+</div>
+</div>
+</article>
+
+<!-- Post Card 5 -->
+<article class="blog-card group cursor-pointer">
+<div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group-hover:border-orange-200">
+<div class="h-48 relative overflow-hidden">
+<img src="https://picsum.photos/400/300?random=5" alt="Blog post image" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-black bg-opacity-20"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<span class="bg-black bg-opacity-30 px-3 py-1 rounded-full text-sm">Career Tips</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
+Networking 101: Building Professional Relationships
+</h3>
+<p class="text-gray-600 mb-4 leading-relaxed">
+Master the art of professional networking and create lasting connections that will advance your career.
+</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">Dec 5, 2024</span>
+<span class="text-orange-600 text-sm font-medium group-hover:text-orange-700">Read More →</span>
+</div>
+</div>
+</div>
+</article>
+
+<!-- Post Card 6 -->
+<article class="blog-card group cursor-pointer">
+<div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group-hover:border-indigo-200">
+<div class="h-48 relative overflow-hidden">
+<img src="https://picsum.photos/400/300?random=6" alt="Blog post image" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-black bg-opacity-20"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<span class="bg-black bg-opacity-30 px-3 py-1 rounded-full text-sm">Technology</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
+The Future of Digital Learning and AI in Education
+</h3>
+<p class="text-gray-600 mb-4 leading-relaxed">
+Explore how artificial intelligence and digital tools are reshaping the landscape of modern education.
+</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">Dec 3, 2024</span>
+<span class="text-indigo-600 text-sm font-medium group-hover:text-indigo-700">Read More →</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+<!-- Footer -->
+<footer style="position: relative; background: linear-gradient(to top, #000000 0%, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0) 100%); color: white; padding: 120px 40px 40px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px;">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<div style="flex: 1; min-width: 200px;">
+<h3 style="font-size: 28px; font-weight: 700; margin: 0 0 16px 0; color: white; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;">NextStep</h3>
+<p style="font-size: 16px; margin: 0 0 20px 0; color: #e0e0e0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;">Take Your <span style="color: #00AEFF;">NextStep</span> Today</p>
+<div style="display: flex; gap: 16px; margin-bottom: 24px;">
+<a href="https://www.tiktok.com/@officialnext.step" target="_blank" style="transition: transform 0.2s ease, opacity 0.2s ease;"><img src="https://www.nextstepofficial.com/TikTokLogo.png" style="width: 32px; height: 32px; border-radius: 6px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.opacity='0.8'" onmouseout="this.style.transform='translateY(0)'; this.style.opacity='1'"></a>
+<a href="https://www.instagram.com/officialnext.step/" target="_blank" style="transition: transform 0.2s ease, opacity 0.2s ease;"><img src="https://www.nextstepofficial.com/InstagramLogo.png" style="width: 32px; height: 32px; border-radius: 6px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.opacity='0.8'" onmouseout="this.style.transform='translateY(0)'; this.style.opacity='1'"></a>
+<a href="https://www.linkedin.com/company/107829449/admin/dashboard/" target="_blank" style="transition: transform 0.2s ease, opacity 0.2s ease;"><img src="https://www.nextstepofficial.com/LinkedInLogo.webp" style="width: 32px; height: 32px; border-radius: 6px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.opacity='0.8'" onmouseout="this.style.transform='translateY(0)'; this.style.opacity='1'"></a>
+</div>
+<p style="color: #818181; font-size: smaller; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;">2025 © All Rights Reserved</p>
+</div>
+
+<div style="flex: 1; min-width: 200px; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;">
+<p style="margin: 0 0 12px 0; font-size: 15px;"><a href="https://apps.apple.com/us/app/nextstep/id6749652297" target="_blank" style="color: #e0e0e0; text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='#00AEFF'" onmouseout="this.style.color='#e0e0e0'">Download</a></p>
+<p style="margin: 0 0 12px 0; font-size: 15px;"><a href="https://www.nextstepofficial.com/ourteam.html" target="_blank" style="color: #e0e0e0; text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='#00AEFF'" onmouseout="this.style.color='#e0e0e0'">Meet The Team</a></p>
+<p style="margin: 0 0 12px 0; font-size: 15px;"><a href="https://www.nextstepofficial.com/PrivacyPolicy.html" target="_blank" style="color: #e0e0e0; text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='#00AEFF'" onmouseout="this.style.color='#e0e0e0'">Privacy Policy</a></p>
+<p style="margin: 0 0 12px 0; font-size: 15px;"><a href="https://www.nextstepofficial.com/contact-us.html" target="_blank" style="color: #e0e0e0; text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='#00AEFF'" onmouseout="this.style.color='#e0e0e0'">Contact Us</a></p>
+</div>
+
+<div style="flex: 1; min-width: 200px; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;">
+<p style="margin: 0 0 12px 0; font-size: 15px;"><a href="https://www.nextstepofficial.com/features.html" target="_blank" style="color: #e0e0e0; text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='#00AEFF'" onmouseout="this.style.color='#e0e0e0'">Premium Features</a></p>
+<p style="margin: 0 0 12px 0; font-size: 15px;"><a href="https://www.nextstepofficial.com/businesses.html" target="_blank" style="color: #e0e0e0; text-decoration: none; transition: color 0.2s ease;" onmouseover="this.style.color='#00AEFF'" onmouseout="this.style.color='#e0e0e0'">Businesses</a></p>
+</div>
+
+<style>
+@media (max-width: 768px) {
+footer {
+flex-direction: column !important;
+padding: 40px 20px !important;
+text-align: center !important;
+gap: 30px !important;
+}
+footer div:first-child div {
+justify-content: center !important;
+}
+}
+</style>
+</footer>
+
+<script>
+// Dark mode detection and support
+document.addEventListener('DOMContentLoaded', function() {
+// Dark mode detection
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+document.documentElement.classList.add('dark');
+}
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+if (event.matches) {
+document.documentElement.classList.add('dark');
+} else {
+document.documentElement.classList.remove('dark');
+}
+});
+
+// Simple and reliable typewriter effect
+const words = ['NextStep', 'Career Growth', 'Note-Taking', 'Education'];
+let currentWordIndex = 0;
+let currentCharIndex = 0;
+let isDeleting = false;
+
+function typeWriter() {
+    const typewriterText = document.getElementById('typewriter-text');
+    const currentWord = words[currentWordIndex];
+    
+    if (!isDeleting) {
+        // Typing
+        typewriterText.textContent = currentWord.substring(0, currentCharIndex + 1);
+        currentCharIndex++;
+        
+        if (currentCharIndex === currentWord.length) {
+            // Finished typing, wait then start deleting
+            setTimeout(() => {
+                isDeleting = true;
+                typeWriter();
+            }, 2000);
+            return;
+        }
+        
+        setTimeout(typeWriter, 100);
+    } else {
+        // Deleting
+        typewriterText.textContent = currentWord.substring(0, currentCharIndex - 1);
+        currentCharIndex--;
+        
+        if (currentCharIndex === 0) {
+            // Finished deleting, move to next word
+            isDeleting = false;
+            currentWordIndex = (currentWordIndex + 1) % words.length;
+            setTimeout(typeWriter, 500);
+            return;
+        }
+        
+        setTimeout(typeWriter, 50);
+    }
+}
+
+// Start the typewriter effect
+typeWriter();
+
+});
+</script>
+</body>
+</html>
 
