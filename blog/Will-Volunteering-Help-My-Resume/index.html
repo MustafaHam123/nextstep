@@ -1,1 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will volunteering hours help my resume?<title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=IBM%20Plex%20Sans:300,500" rel="stylesheet" />
+  <style>
+    /* Article Styling - Updated with Inter font and better formatting */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    h1 {
+      font-size: 48px !important;
+      font-weight: 700 !important;
+      margin-bottom: 24px !important;
+      line-height: 1.2 !important;
+      color: #000 !important;
+      letter-spacing: -0.02em !important;
+    }
+    .author-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      font-size: 15px;
+      color: #666;
+      font-weight: 500;
+    }
+    .author-section img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .stats {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0;
+      color: #888;
+      border-top: 1px solid #e8e8e8;
+      border-bottom: 1px solid #e8e8e8;
+      margin-bottom: 40px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .post-image {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 48px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    p {
+      font-size: 19px;
+      margin-bottom: 28px;
+      color: #2a2a2a;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+    h2 {
+      margin-top: 56px !important;
+      margin-bottom: 24px !important;
+      font-size: 32px !important;
+      font-weight: 700 !important;
+      color: #000 !important;
+      letter-spacing: -0.01em !important;
+      line-height: 1.3 !important;
+    }
+    /* Navbar Styling - Inter Font */
+    .nextstep-navbar {
+      background: #ffffff;
+      backdrop-filter: blur(16px);
+      border-radius: 50px;
+      padding: 0.75rem 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      margin: 1.5rem auto;
+      width: fit-content;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+    .nextstep-navbar a {
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+    .nextstep-navbar a:hover {
+      color: #000;
+    }
+    /* Mobile responsive adjustments */
+    @media (max-width: 768px) {
+      .nextstep-navbar {
+        max-width: calc(100vw - 3rem) !important;
+        margin: 1.5rem 1.5rem !important;
+        padding: 0.75rem 1rem !important;
+      }
+      .nextstep-navbar .hidden.md\:flex {
+        display: none !important;
+      }
+      .container {
+        padding: 40px 20px;
+      }
+      h1 {
+        font-size: 36px;
+      }
+      h2 {
+        font-size: 28px;
+        margin-top: 40px;
+      }
+      p {
+        font-size: 17px;
+      }
+    }
+    /* Footer Styling - Original Dark with White Text */
+    :root { --m: 4rem; }
+    footer {
+      margin-top: 80px;
+      width: 100%;
+      height: 100vh;
+      z-index: 500;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: flex-end;
+      padding: 5rem 2vw;
+      position: relative;
+      color: #ffffff;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-weight: 300;
+    }
+    footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -7;
+      background: linear-gradient(
+        rgba(0,0,0,0) 5%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.6) 30%,
+        rgba(0,0,0,0.8) 40%, rgba(0,0,0,1) 50%, rgb(0,0,0)
+      );
+    }
+    .backdrop {
+      z-index: -5;
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      mask-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,1) 30%, rgb(0,0,0));
+      -webkit-mask-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,1) 30%, rgb(0,0,0));
+    }
+    .col {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: calc(0.3 * var(--m)) calc(0.8 * var(--m));
+      width: 28%;
+    }
+    .col2, .col3 {
+      background-color: #121212;
+      border-radius: calc(0.5 * var(--m));
+    }
+    footer img {
+      height: calc(0.3 * var(--m));
+      object-fit: cover;
+    }
+    .social {
+      display: flex;
+      gap: 1rem;
+    }
+    footer a {
+      text-decoration: none;
+      color: #ffffff;
+    }
+    .link {
+      width: calc(0.8 * var(--m));
+      height: calc(0.8 * var(--m));
+      background-color: rgba(255,255,255,0.1);
+      border-radius: calc(0.1 * var(--m));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    footer h3 {
+      font-weight: 500;
+      font-size: calc(0.6 * var(--m));
+      margin: 0;
+      color: #ffffff;
+    }
+    footer p {
+      font-size: calc(0.3 * var(--m));
+      margin: 0.5rem 0;
+      line-height: 1.6;
+      color: #ffffff;
+    }
+    @media (max-width: 1000px) {
+      :root { --m: 3rem; }
+    }
+    @media (max-width: 700px) {
+      footer {
+        flex-direction: column;
+        padding: 5rem 20vw;
+        height: auto;
+        margin-top: 60px;
+      }
+      .col {
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="flex justify-center" role="banner">
+    <nav class="nextstep-navbar flex items-center space-x-8" role="navigation" aria-label="Main navigation">
+      <!-- Logo -->
+      <div class="flex items-center space-x-2">
+        <img src="https://nextstepofficial.com/NextStepLogo.png" alt="NextStep Logo - Student Internships and AI Productivity Tools Platform" class="w-8 h-8 rounded-full" width="32" height="32" loading="eager" fetchpriority="high">
+        <span class="font-bold text-lg">NextStep</span>
+      </div>
+      <!-- Nav links -->
+      <div class="hidden md:flex space-x-6 text-gray-700">
+        <a href="https://www.nextstepofficial.com/features.html" aria-label="Explore NextStep's features and AI tools" title="Discover all NextStep features including AI Note Taker, Career Counselor, and Passion Project Generator">Features</a>
+        <a href="https://www.nextstepofficial.com/contact-us.html" aria-label="Contact NextStep team" title="Get in touch with NextStep for support, partnerships, or questions">Contact Us</a>
+        <a href="https://www.nextstepofficial.com/ourteam.html" aria-label="Learn why NextStep is the right choice" title="Discover why students and professionals choose NextStep for internships and AI productivity tools">Why Us</a>
+        <a href="https://apps.apple.com/us/app/nextstep/id6749652297" aria-label="Download NextStep app" title="Download NextStep app for iOS to access internships, scholarships, and AI productivity tools">Download</a>
+        <a href="https://www.nextstepofficial.com/blog" aria-label="Read NextStep blog" title="Read the latest articles, tips, and insights from NextStep about careers, internships, and productivity">Blog</a>
+      </div>
+      <!-- Right button -->
+      <div>
+        <a href="https://www.nextstepofficial.com/businesses.html" class="bg-black text-white px-4 py-2 rounded-full text-sm hover:opacity-80" aria-label="NextStep for businesses and employers" title="NextStep partnership opportunities for employers to post internships and access our AI-powered talent pipeline">
+          For Businesses
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Article Content -->
+  <div class="container">
+    <h1 id="article-title">Will Volunteering Hours Help My Resume?</h1>
+    <div class="author-section">
+      <img id="author-image" src="https://www.nextstepofficial.com/Mustafa.png" alt="author" />
+      <span id="author-name">Mustafa Hameed</span>
+      <span id="article-meta">3 min read · Nov 23, 2025</span>
+    </div>
+    <div class="stats">
+      <span id="view-count">Views: 52</span>
+    </div>
+    <img class="post-image" id="featured-image" src="https://www.nextstepofficial.com/blog/FifthPost.png" alt="article featured image" />
+
+    <p>Volunteering has always been meaningful, but today it is also one of the smartest moves a student can make. Colleges and employers care about more than grades. They want dedication, initiative, leadership, and consistency. Volunteer work helps you show all of that in a way regular extracurriculars often cannot.</p>
+
+    <p>In this guide we break down why volunteering can strengthen your college applications and your resume. We explore real statistics, practical benefits, and how to use volunteer experience the right way when applying for opportunities.</p>
+
+    <h2>Why Volunteering Matters for Your Future</h2>
+
+    <p>For high school students looking to stand out, volunteering can be one of the clearest indicators of character and work ethic. Colleges and employers value responsibility and willingness to contribute without expecting anything in return.</p>
+
+    <p>According to a study cited by Fortune, 82 percent of hiring managers prefer applicants with volunteer experience, and 92 percent believe volunteer activities help build leadership skills. Research from the Corporation for National and Community Service found that volunteers have a 27 percent higher likelihood of finding a job after being unemployed compared to non-volunteers. Volunteers without a high school diploma had a 51 percent higher chance of finding employment.</p>
+
+    <h2>How Volunteering Helps You Build Real Skills</h2>
+
+    <p>Volunteering is not just about service. It can teach you skills directly useful in college, internships, and career opportunities.</p>
+
+    <h2>Networking</h2>
+    <p>Volunteering naturally brings you into contact with new people, including teachers, organization leaders, and community members. These connections may become mentors or references in the future. It is a low-pressure environment to meet people and demonstrate your character.</p>
+
+    <h2>Collaboration</h2>
+    <p>Most volunteer projects require teamwork. Whether packaging meals, planning events, or assisting at community centers, you develop communication and collaboration skills colleges and employers value highly. Showing that you can work well with others is crucial for professional growth.</p>
+
+    <h2>Skill Development</h2>
+    <p>Many volunteer positions provide hands-on experience. Working with organizations related to healthcare, education, business, or tech gives you a preview of certain jobs. You learn in a real environment rather than reading about it.</p>
+
+    <h2>Leadership</h2>
+    <p>Long-term volunteering can lead to leadership opportunities. Becoming a team lead, organizing events, or managing tasks gives you responsibilities you can highlight in applications. Leadership through service demonstrates commitment and empathy.</p>
+
+    <h2>Personal Growth</h2>
+    <p>Volunteering builds confidence and resilience. You learn more about yourself and what you care about. Experiencing different environments helps you discover strengths and interests you may not have noticed before.</p>
+
+    <h2>How To Add Volunteer Work To Your Resume</h2>
+    <p>When adding volunteer experience to a resume, follow these guidelines for best results:</p>
+    <p>• List your volunteer role, organization, and dates.</p>
+    <p>• Add bullet points describing what you did and skills used.</p>
+    <p>• Focus on impact and quantify work when possible.</p>
+    <p>• Use language similar to jobs or internships.</p>
+    <p>Place volunteer work under “Experience” if relevant to your target career; otherwise under “Volunteering” or “Community Involvement.” Be mindful some experiences may reveal personal beliefs, such as political or religious affiliations.</p>
+
+    <h2>Why Volunteering Can Give You an Advantage</h2>
+    <p>Volunteering tells a story grades cannot. It shows you care about more than yourself and are willing to invest time and effort to contribute. Combined with academics and extracurriculars, volunteering significantly strengthens college applications, resumes, and long-term career prospects.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="col col1">
+      <h3>NextStep</h3>
+      <p>Take Your <span style="color: #00AEFF;">NextStep</span> Today</p>
+      <div class="social">
+        <a href="https://www.tiktok.com/@officialnext.step" target="_blank" class="link"><img src="https://www.nextstepofficial.com/TikTokLogo.png" /></a>
+        <a href="https://www.instagram.com/officialnext.step/" target="_blank" class="link"><img src="https://www.nextstepofficial.com/InstagramLogo.png" /></a>
+        <a href="https://www.linkedin.com/company/107829449/admin/dashboard/" target="_blank" class="link"><img src="https://www.nextstepofficial.com/LinkedInLogo.webp" /></a>
+      </div>
+      <p style="color: #818181; font-size: smaller;">2025 © All Rights Reserved</p>
+    </div>
+    <div class="col col2">
+      <p><a href="https://apps.apple.com/us/app/nextstep/id6749652297" target="_blank">Download</a></p>
+      <p><a href="https://www.nextstepofficial.com/MeetTheTeam.html" target="_blank">Meet The Team</a></p>
+      <p><a href="https://www.nextstepofficial.com/PrivacyPolicy.html" target="_blank">Privacy Policy</a></p>
+      <p><a href="https://www.nextstepofficial.com/contact-us.html" target="_blank">Contact Us</a></p>
+    </div>
+    <div class="col col3">
+      <p><a href="https://www.nextstepofficial.com/features.html" target="_blank">Premium Features</a></p>
+      <p><a href="https://www.nextstepofficial.com/businesses.html" target="_blank">Businesses</a></p>
+    </div>
+    <div class="backdrop"></div>
+  </footer>
+
+  <script>
+    // Dark mode support
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+      if (event.matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    });
+  </script>
+</body>
+</html>
 
