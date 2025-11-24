@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | NextStep</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        'bg-light': '#FFFFFF',
+                        'bg-dark': '#181818'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #7C3AED, #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white transition-colors duration-300">
+    <div class="min-h-screen flex flex-col items-center justify-center px-4">
+        <!-- Logo -->
+        <div class="floating fade-in mb-8">
+            <img 
+                src="https://www.nextstepofficial.com/NextStepLogo.png" 
+                alt="NextStep Logo" 
+                class="w-32 h-32 md:w-40 md:h-40 mx-auto"
+                onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='block';"
+            >
+            <!-- Fallback logo in case image doesn't load -->
+            <div id="fallback-logo" class="w-32 h-32 md:w-40 md:h-40 mx-auto bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white text-4xl font-bold hidden">
+                NS
+            </div>
+        </div>
+        
+        <!-- 404 Content -->
+        <div class="text-center max-w-md mx-auto fade-in">
+            <h1 class="text-8xl md:text-9xl font-bold gradient-text mb-4">404</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+                Page Not Found
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-8 text-lg">
+                Oops! The page you're looking for doesn't exist. Let's get you back on track.
+            </p>
+            
+            <!-- Back to Main Site Button -->
+            <a 
+                href="https://www.nextstepofficial.com" 
+                class="inline-flex items-center px-8 py-4 bg-primary hover:bg-purple-700 text-white font-semibold rounded-lg transition-all duration-300 hover-scale shadow-lg hover:shadow-xl"
+            >
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to Main Site
+            </a>
+        </div>
+        
+        <!-- Additional Help Links -->
+        <div class="mt-12 text-center fade-in">
+            <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">
+                Looking for something specific?
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 text-sm">
+                <a href="https://www.nextstepofficial.com" class="text-primary hover:text-purple-700 transition-colors">
+                    Home
+                </a>
+                <span class="text-gray-300 dark:text-gray-600">|</span>
+                <a href="https://www.nextstepofficial.com/features.html" class="text-primary hover:text-purple-700 transition-colors">
+                    Features
+                </a>
+                <span class="text-gray-300 dark:text-gray-600">|</span>
+                <a href="/contact-us.html" class="text-primary hover:text-purple-700 transition-colors">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dark mode detection script -->
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+</body>
+</html>
