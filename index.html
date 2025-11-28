@@ -160,9 +160,6 @@
 
 <!-- CRITICAL CSS INLINE -->
 <style>
-html {
-  scroll-behavior: smooth;
-}
 html{line-height:1.15;-webkit-text-size-adjust:100%}
 body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
 *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
@@ -1877,6 +1874,23 @@ img.loading = 'eager';
 });
 </script>
 
+<!--smoothscroll-->
+<script>
+let scrollSpeed = 0.08; // lower = slower & smoother (0.05 is very slow)
+
+let current = 0;
+let target = 0;
+let ease = scrollSpeed;
+
+function smoothScroll() {
+  target = window.scrollY;
+  current += (target - current) * ease;
+  window.scrollTo(0, current);
+  requestAnimationFrame(smoothScroll);
+}
+
+smoothScroll();
+</script>
 
 
 </body></html>
