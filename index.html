@@ -1874,23 +1874,4 @@ img.loading = 'eager';
 });
 </script>
 
-<!--smoothscroll-->
-<script>
-let scrollSpeed = 0.50; // lower = slower & smoother (0.05 is very slow)
-
-let current = 0;
-let target = 0;
-let ease = scrollSpeed;
-
-function smoothScroll() {
-  target = window.scrollY;
-  current += (target - current) * ease;
-  window.scrollTo(0, current);
-  requestAnimationFrame(smoothScroll);
-}
-
-smoothScroll();
-</script>
-
-
 </body></html>
